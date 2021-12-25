@@ -1,0 +1,83 @@
+@use 'colors';
+
+@mixin centerAll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-text: center;
+  margin: auto;
+}
+
+@keyframes blurOut {
+  from {
+    backdrop-filter: blur(0) brightness(100%);
+  }
+  to {
+    backdrop-filter: blur(10px) brightness(40%);
+  }
+}
+
+.blurScreen {
+  @include centerAll;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  right: 0;
+  animation-name: blurOut;
+  animation-duration: 1s;
+  backdrop-filter: blur(10px) brightness(40%);
+  z-index: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  justify-content: center;
+}
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  h6 {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+  }
+  margin: 20px;
+  padding: 10px 30px;
+  background-color: colors.$bg-green;
+  border-radius: 30px;
+  transition: 0.5s;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+.dialogBox {
+  @include centerAll;
+  h1 {
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  padding: 12px;
+  width: 60%;
+  height: 40%;
+  background-color: colors.$bg-green-dark;
+  border-radius: 48px;
+}

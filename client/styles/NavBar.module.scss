@@ -1,0 +1,50 @@
+@use 'colors';
+
+.navbar {
+  background-color: rgba(7, 12, 7, 0.9);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.bankLogo {
+  display: flex;
+  width: 200px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin navbarLabel {
+  font-family: Poppins;
+  color: white;
+}
+
+.brand {
+  @include navbarLabel;
+  font-size:22px;
+  font-weight: 500;
+}
+
+@media (min-width: 990px) {
+  .verticalSeperator {
+    background-color: colors.$bg-green;
+    width: 2px;
+    margin: 0px 20px;
+    height: 70px;
+  }
+}
+.selectableLabel {
+  @include navbarLabel;
+  cursor: pointer;
+  font-weight: 200;
+}
+
+.selectableLabel:hover {
+  color: colors.$bg-green;
+}
+
+.toggler {
+  border: 0px;
+}

@@ -1,0 +1,160 @@
+@use 'colors';
+
+.parent {
+    position: relative;
+    padding: 3em;
+    height: 8em;
+}
+
+.body {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.child{
+    display: flex;
+    border: 2px solid red;
+    min-width: 40%;
+}
+
+.h1 {
+    padding: 40px;
+    max-width: 25%;
+}
+
+
+.searchBar {
+    --size: 50px;
+    border: 2px solid colors.$bg-black;
+    display: flex;
+    border-radius: 5000px;
+    height: var(--size);
+    width: var(--size);
+    padding: 2px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(black, 0.15);
+    transition: width 600ms cubic-bezier(0.18, 0.93, 0.32, 1.03);
+    overflow: hidden;
+
+    &__input {
+       flex-grow: 1;
+       font-size: 1.2rem;
+       padding: 0 0.7rem;
+       border: 0;
+       position: absolute;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       line-height: calc(var(--size) - 1px);
+       opacity: 0;
+       cursor: pointer;
+    }
+
+    *:focus {
+        outline: none;
+    }
+    
+    &__button {
+        background: colors.$bg-black;
+        cursor: pointer;
+        border: 0;
+        border-radius: 50%;
+        width: calc(var(--size) - 7px);
+        height: calc(var(--size) - 7px);
+        margin-left: auto;
+        transition: background 100ms ease-in-out;
+    }
+
+    &:focus-within {
+        width: 100%;
+
+        .searchBar__input {
+            opacity: 1;
+            width: calc(100% - 60px);
+            cursor: initial;
+        }
+        .searchBar__button {
+            background: colors.$bg-black;
+            color: whitesmoke;
+
+            &:hover {
+                background-color: colors.$bg-green;
+                box-shadow: 0 0 10px rgba(black, 0.35);
+            }
+        }
+    }
+    
+    &__icon{
+        color: whitesmoke;
+        font-size: 1.5rem;
+    }
+    
+}
+
+.card {
+    max-width: 95%;
+    border-radius: 20px;
+    margin: 0 auto;
+    background-color: colors.$bg-black;
+    box-shadow: 0 0 10px rgba(black, 0.5);
+    overflow-x: auto;
+}
+
+.table {
+    color: grey;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+.debit {
+    color: rgba(250, 9, 9, 0.849);
+
+}
+.credit {
+    color: #2db78d;
+}
+
+.paginationBtns {
+    margin: 50px auto;
+    width: 80%;
+    height: 40%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.paginationBtns a {
+    padding: 15px;
+    margin: 8px;
+    border-radius: 60px;
+    border: 2px solid #080f0f;
+    background-color: colors.$bg-black;
+    box-shadow: 0 0 7px rgba(black, 0.25);
+    color: colors.$bg-green;
+    cursor: pointer;
+}
+
+.paginationBtns a:hover {
+    transition: 100ms;
+    color: whitesmoke;
+    box-shadow: 0px 0px 10px #2db78eec;
+    background-color: colors.$bg-green;
+}
+
+.paginationActive a {
+    color: whitesmoke;
+    background-color: colors.$bg-green;
+}
+.previousBtn {
+    text-decoration: none;
+}
+
+.nextBtn {
+    text-decoration: none;
+}
+
+.highlight {
+    background-color: rgba(218, 165, 32, 0.651);
+    color: gold;
+}
