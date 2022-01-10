@@ -1,0 +1,22 @@
+@use "colors";
+
+.newTransfer {
+  background-color: colors.$bg-green;
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.newTransferText {
+  color: white;
+  font-weight: 700;
+  height: 10px;
+  text-align: center;
+  font-size: 18px;
+}

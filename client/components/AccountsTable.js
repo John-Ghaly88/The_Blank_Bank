@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Table } from "reactstrap";
 import { getAccountData } from "../services/accounts";
 import LoadingIcons from "react-loading-icons";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
+import styles from "../styles/Dashboard.module.scss";
 
 const AccountsTable = (props) => {
   const router = useRouter();
@@ -47,6 +49,16 @@ const AccountsTable = (props) => {
         </tbody>
       </Table>
       {loading && <LoadingIcons.ThreeDots stroke="#113311" />}
+      <div
+        onClick={() => {
+          props.handleTransferSelect(accounts);
+        }}
+        className={`${styles.newTransfer} unselectable`}
+      >
+        <p className={styles.newTransferText}>
+          <MdOutlineAddCircleOutline /> &nbsp;&nbsp;New transfer
+        </p>
+      </div>
     </>
   );
 };

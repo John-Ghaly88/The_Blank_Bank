@@ -2,13 +2,26 @@ import React, { useState } from "react";
 import Transactions from "./Transactions";
 import AccountsTable from "./AccountsTable";
 import NavigatibleView from "./NavigatibleView";
+import Transfer from "./Transfer";
 
 const AccountsView = (props) => {
   const [currentView, setCurrentView] = useState("Accounts");
   const [previousView, setPreviousView] = useState("");
 
+  const handleTransferSelect = (accounts) => {
+    setViews({
+      ...views,
+      Transfer: <Transfer accounts={accounts} />,
+    });
+    setPreviousView("Accounts");
+    setCurrentView("Transfer");
+  };
+
   const handleTransactionSelect = (id) => {
-    setViews({ ...views, Transactions: <Transactions id={id} /> });
+    setViews({
+      ...views,
+      Transactions: <Transactions id={id} />,
+    });
     setPreviousView("Accounts");
     setCurrentView("Transactions");
   };
@@ -23,7 +36,10 @@ const AccountsView = (props) => {
 
   const [views, setViews] = useState({
     Accounts: (
-      <AccountsTable handleTransactionSelect={handleTransactionSelect} />
+      <AccountsTable
+        handleTransactionSelect={handleTransactionSelect}
+        handleTransferSelect={handleTransferSelect}
+      />
     ),
   });
 

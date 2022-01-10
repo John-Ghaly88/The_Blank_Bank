@@ -1,0 +1,137 @@
+@use "colors";
+
+.label {
+  font-weight: 1000;
+}
+
+.input {
+  font-weight: normal;
+  width: 320px;
+  height: 46px;
+}
+
+.warning {
+  color: red;
+}
+
+@mixin centerAll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin SendButtonProperties {
+  @include centerAll();
+  color: "white";
+  width: 265px;
+  height: 265px;
+  display: flex;
+}
+
+.SendButtonContainer {
+  @include SendButtonProperties();
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  animation-name: showContent;
+  animation-duration: 1s;
+}
+
+.SendButton {
+  @include SendButtonProperties();
+  background: colors.$bg-green;
+  border-radius: 132.5px;
+  color: white;
+  font-weight: 600;
+  font-size: 26px;
+  transform: translate(50px, 50px);
+  padding-bottom: 25px;
+  padding-right: 25px;
+  cursor: pointer;
+}
+
+.SendButton:hover {
+  background: transparent;
+  color: colors.$bg-green;
+  border-width: 3px;
+  border-color: colors.$bg-green;
+  border-style: solid;
+}
+
+.parentContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.rightViewContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.summaryContainer {
+  padding: 40px;
+  background: rgba(45, 183, 141, 0.22);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.summaryItemContainer {
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.accountNumberText {
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.deductText {
+  color: #c61111;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.increaseText {
+  color: #2db78d;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .parentContainer {
+    flex-direction: column;
+  }
+
+  .rightViewContainer {
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+  }
+}
