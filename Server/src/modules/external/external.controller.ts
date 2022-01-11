@@ -65,6 +65,7 @@ export class ExternalController {
       );
     }
 
+    console.log(res.status);
     return res.status;
   }
 

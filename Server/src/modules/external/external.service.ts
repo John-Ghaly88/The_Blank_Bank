@@ -2,24 +2,13 @@ import { Injectable, HttpException } from "@nestjs/common";
 import { HttpService } from "@nestjs/axios";
 import { TransferDto } from "../transaction/dto/transfer.dto";
 import { AxiosResponse } from "axios";
-//const THIRD_PARTY_ENDPOINTS = [
-//  //test APIS
-//  "http://fht-rpi4.ddns.net/success",
-//  "http://fht-rpi4.ddns.net/invalidtoken",
-//  "http://fht-rpi4.ddns.net/missingfields",
-//  "http://fht-rpi4.ddns.net/usernotfound",
-//  "http://fht-rpi4.ddns.net/amountexceeded",
-//];
-//
 
 const THIRD_PARTY_ENDPOINTS = [
-  //test APIS
-  //
-  "http://fht-rpi4.ddns.net/usernotfound",
-  "http://fht-rpi4.ddns.net/usernotfound",
-  "http://fht-rpi4.ddns.net/usernotfound",
-  "http://fht-rpi4.ddns.net/usernotfound",
-  "http://fht-rpi4.ddns.net/success",
+  "https://ironbank.loca.lt/external/transfer",
+  "https://solace.loca.lt/external/transfer",
+  "https://myfsd.loca.It/external/transfer",
+  "https://amryinternationalbank.loca.lt/external/transfer",
+  "https://luckbank.loca.lt/external/transfer",
 ];
 
 @Injectable()
@@ -32,11 +21,12 @@ export class ExternalService {
         const res = await this.httpService.post(b, transferDto).toPromise();
         return res;
       } catch (e) {
-        console.log(e);
         if (e.response.data.error !== "account number not found") {
           throw new HttpException(e.response.data.error, e.response.status);
         }
       }
     }
+
+    throw new HttpException("account number not found", 400);
   }
 }
