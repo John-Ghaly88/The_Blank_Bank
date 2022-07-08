@@ -16,4 +16,5 @@ import { ExternalModule } from "./modules/external/external.module";
     ExternalModule,
   ],
 })
+
 export class AppModule {}
